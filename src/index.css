@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+  }
+  body {
+    @apply bg-[#14131A] text-white/90 antialiased font-sans select-none overflow-hidden;
+  }
+}
+
+/* Custom scrollbar for sticky notes and lists */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Bouncy cartoon cards */
+.cartoon-card {
+  @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:rotate-1 hover:shadow-lg;
+}
+
+.cartoon-btn {
+  @apply transition-all duration-200 ease-out active:scale-95 hover:scale-105;
+}
+
+/* Digit flip animation styling */
+.flip-digit {
+  perspective: 400px;
+}
+
+.flip-digit-inner {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-digit.animating .flip-digit-inner {
+  transform: rotateX(360deg);
+}
+
+/* Glassmorphic panels */
+.glass-panel {
+  background: rgba(30, 27, 46, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scrollable sub-view area */
+.scrollable {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+.scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+}
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* Note rich-text styles (prose-like but lightweight) */
+.note-rich-content ul, .tiptap ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+.note-rich-content ol, .tiptap ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+.note-rich-content h1, .tiptap h1 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.note-rich-content h2, .tiptap h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+.note-rich-content p, .tiptap p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.note-rich-content strong, .tiptap strong {
+  font-weight: 700;
+}
+.note-rich-content em, .tiptap em {
+  font-style: italic;
+}
+.note-rich-content u, .tiptap u {
+  text-decoration: underline;
+}
+.note-rich-content s, .tiptap s {
+  text-decoration: line-through;
+}
+
+/* TipTap Editor editable styling */
+.tiptap {
+  min-height: 250px;
+  outline: none;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  height: 0;
+}
