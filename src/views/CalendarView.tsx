@@ -105,7 +105,7 @@ export const CalendarView: React.FC = () => {
       {/* Days of Week Row */}
       <div className="grid grid-cols-7 gap-2 mb-2 text-center">
         {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
-          <div key={day} className="py-2 text-sm font-extrabold text-white uppercase tracking-wider">
+          <div key={day} className="py-2 text-sm font-extrabold text-white  uppercase tracking-wider">
             <span className="hidden md:inline">{day}</span>
             <span className="md:hidden">{day.slice(0, 3)}</span>
           </div>
@@ -135,21 +135,20 @@ export const CalendarView: React.FC = () => {
               onClick={() => handleCellClick(dayNum)}
               className={`group min-h-[100px] p-2 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between cartoon-card ${
                 isToday
-                ? 'bg-sunshine-400/12 border-sunshine-400/60 shadow-xl shadow-sunshine-500/20'
-                : 'bg-black/30 border-white/15 hover:bg-black/40 hover:border-white/25'
+                ? 'bg-black/70 backdrop-blur-xl border-2 border-white/20 shadow-2xl shadow-black/50'
+                : 'bg-neutral-900/60 backdrop-blur-lg border-white/10 hover:bg-black/45 hover:border-white/20'
               }`}
             >
               {/* Day Header */}
               <div className="flex items-center justify-between">
                 <span
-  className={`w-10 h-10 rounded-full flex items-center justify-center font-extrabold text-base transition-all ${
-    isToday
-      ? 'bg-sunshine-400 text-black shadow-lg'
-      : 'text-white group-hover:text-white group-hover:bg-white/10'
-  }`}
->
-  {dayNum}
-</span>
+                className={`w-10 h-10 rounded-full flex items-center justify-center font-extrabold text-base transition-all ${
+                  isToday
+                  ? 'bg-white/30 text-white font-white border-2 border-white/50 shadow-5xl backdrop-blur-md'
+                  : 'text-white group-hover:text-white group-hover:bg-white/10'
+                }`}>
+                {dayNum}
+              </span>
 
                 <button
                   onClick={(e) => {
