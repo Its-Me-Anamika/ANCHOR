@@ -55,7 +55,6 @@ export const CalendarView: React.FC = () => {
             <h1 className="text-2xl font-black text-white tracking-wide">
               {monthNames[month]} {year}
             </h1>
-            <p className="text-xs text-white/40">Click any day to add or edit events</p>
           </div>
         </div>
 
@@ -106,7 +105,7 @@ export const CalendarView: React.FC = () => {
       {/* Days of Week Row */}
       <div className="grid grid-cols-7 gap-2 mb-2 text-center">
         {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
-          <div key={day} className="py-2 text-xs font-bold text-white/40 uppercase tracking-wider">
+          <div key={day} className="py-2 text-sm font-extrabold text-white uppercase tracking-wider">
             <span className="hidden md:inline">{day}</span>
             <span className="md:hidden">{day.slice(0, 3)}</span>
           </div>
@@ -117,7 +116,7 @@ export const CalendarView: React.FC = () => {
       <div className="grid grid-cols-7 gap-2 flex-1 auto-rows-fr min-h-[500px]">
         {/* Empty Padding Cells */}
         {Array.from({ length: adjustedFirstDay }).map((_, idx) => (
-          <div key={`pad-${idx}`} className="bg-white/[0.02] border border-white/[0.04] rounded-2xl opacity-40 min-h-[100px]" />
+          <div key={`pad-${idx}`} className="bg-white/[0.02] border border-white/[0.04] rounded-2xl opacity-40 min-h-[115px]" />
         ))}
 
         {/* Date Cells */}
@@ -136,17 +135,21 @@ export const CalendarView: React.FC = () => {
               onClick={() => handleCellClick(dayNum)}
               className={`group min-h-[100px] p-2 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between cartoon-card ${
                 isToday
-                  ? 'bg-sunshine-400/10 border-sunshine-400/50 shadow-lg shadow-sunshine-500/10'
-                  : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
+                ? 'bg-sunshine-400/12 border-sunshine-400/60 shadow-xl shadow-sunshine-500/20'
+                : 'bg-black/30 border-white/15 hover:bg-black/40 hover:border-white/25'
               }`}
             >
               {/* Day Header */}
               <div className="flex items-center justify-between">
-                <span className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs ${
-                  isToday ? 'bg-sunshine-400 text-black font-extrabold shadow-md' : 'text-white/80 group-hover:text-white'
-                }`}>
-                  {dayNum}
-                </span>
+                <span
+  className={`w-10 h-10 rounded-full flex items-center justify-center font-extrabold text-base transition-all ${
+    isToday
+      ? 'bg-sunshine-400 text-black shadow-lg'
+      : 'text-white group-hover:text-white group-hover:bg-white/10'
+  }`}
+>
+  {dayNum}
+</span>
 
                 <button
                   onClick={(e) => {

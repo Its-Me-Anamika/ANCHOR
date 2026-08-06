@@ -31,40 +31,41 @@ function CityChip({ label, country, weather, onClick, now }: CityChipProps) {
   return (
     <button
       onClick={onClick}
-      className="flex flex-col items-center gap-1.5 px-3 py-3 rounded-2xl border transition-all duration-200 hover:scale-105 hover:opacity-90 cartoon-btn"
+      className="flex flex-col items-center gap-1.5 px-5 py-5 rounded-3xl border transition-all duration-200 hover:scale-105 hover:opacity-90 cartoon-btn"
       style={{
-        background: 'var(--color-surface)',
+        background: 'rgba(15,15,15,0.82)',
         borderColor: 'var(--color-border)',
         color: 'var(--color-text-primary)',
-        minWidth: '88px',
-        maxWidth: '112px',
+        minWidth: '200px',
+        maxWidth: '220px',
+        minHeight: '180px',
       }}
       title={`${label}${country ? `, ${country}` : ''} — click to open Weather`}
     >
       {weather ? (
         <>
-          <span className="text-2xl leading-none">{weather.icon}</span>
-          <span className="text-xl font-black leading-none" style={{ color: 'var(--color-text-primary)' }}>
+          <span className="text-3xl leading-none">{weather.icon}</span>
+          <span className="text-3xl font-black leading-none" style={{ color: 'var(--color-text-primary)' }}>
             {weather.temp}°
           </span>
           <span
-            className="text-[11px] font-semibold opacity-75 truncate w-full text-center"
+            className="text-lg font-semibold opacity-75 truncate w-full text-center"
             style={{ color: 'var(--color-text-primary)' }}
           >
             {label}
           </span>
           {country && (
             <span
-              className="text-[9px] opacity-40 truncate w-full text-center"
-              style={{ color: 'var(--color-text-secondary)' }}
+              className="text-lg opacity-70 truncate w-full text-center"
+              style={{ color: 'var(--color-text-primary)' }}
             >
               {country}
             </span>
           )}
           {localTime && (
             <span
-              className="text-[10px] font-medium opacity-55 mt-0.5"
-              style={{ color: 'var(--color-text-secondary)' }}
+              className="text-sm font-medium opacity-80 mt-0.5"
+              style={{ color: 'var(--color-text-primary)' }}
             >
               {localTime}
             </span>

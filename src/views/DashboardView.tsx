@@ -31,7 +31,7 @@ export const DashboardView: React.FC = () => {
       {/* 2.1 Greeting */}
       <div className="flex items-center gap-2 mb-1 animate-pop">
         <Sparkles className="w-5 h-5 text-sunshine-400" />
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-light text-white/70 tracking-wide font-sans">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold text-white/70 tracking-wide font-family: 'Fredoka', sans-serif;">
           {greeting}
         </h1>
       </div>
@@ -40,8 +40,8 @@ export const DashboardView: React.FC = () => {
       <FlipClock />
 
       {/* 2.3 Date Display */}
-      <p className="text-lg sm:text-xl text-white/40 font-medium tracking-wide my-1">
-        {dateFormatted}
+      <p className="text-2xl sm:text-2xl font-semibold tracking-wide mt-1 mb-1 text-white/90">
+      {dateFormatted}
       </p>
 
       {/* 2.4 Quote of the Day */}
