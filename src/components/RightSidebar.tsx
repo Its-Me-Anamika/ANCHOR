@@ -56,7 +56,7 @@ export const RightSidebar: React.FC = () => {
   return (
     <aside className="w-72 shrink-0 hidden lg:flex flex-col gap-5 h-screen py-6 pr-6 pl-2 z-30 select-none overflow-y-auto">
       {/* 3.1 Mini Calendar (View Only) */}
-      <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-xl cartoon-card">
+      <div className="bg-black/35 backdrop-blur-xl border border-white/15 rounded-3xl p-4 shadow-2xl shadow-black/40 cartoon-card">
         {/* Header */}
         <div className="flex items-center justify-between mb-3 px-1">
           <h3 className="text-sm font-bold text-white/80 flex items-center gap-2">
@@ -66,14 +66,14 @@ export const RightSidebar: React.FC = () => {
           <div className="flex items-center gap-1">
             <button
               onClick={prevMonth}
-              className="w-6 h-6 rounded-lg bg-white/5 hover:bg-white/15 flex items-center justify-center text-white/70 hover:text-white transition-all cartoon-btn"
+              className="w-6 h-6 rounded-lg bg-white/5 hover:bg-white/10 hover:scale-110 flex items-center justify-center text-white/70 hover:text-white transition-all cartoon-btn"
               title="Previous Month"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={nextMonth}
-              className="w-6 h-6 rounded-lg bg-white/5 hover:bg-white/15 flex items-center justify-center text-white/70 hover:text-white transition-all cartoon-btn"
+              className="w-6 h-6 rounded-lg bg-white/5 hover:bg-white/10 hover:scale-110 flex items-center justify-center text-white/70 hover:text-white transition-all cartoon-btn"
               title="Next Month"
             >
               <ChevronRight className="w-3.5 h-3.5" />
@@ -84,8 +84,13 @@ export const RightSidebar: React.FC = () => {
         {/* Days of Week */}
         <div className="grid grid-cols-7 gap-1 text-center mb-2">
           {['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((day) => (
-            <span key={day} className="text-[11px] font-semibold text-white/30">
-              {day}
+            <span
+            key={day}
+            className={`text-[11px] font-semibold ${
+              day === 'Su' ? 'text-red-400' : 'text-white'
+            }`}
+            >
+            {day}
             </span>
           ))}
         </div>
@@ -105,16 +110,19 @@ export const RightSidebar: React.FC = () => {
             const cellIso = `${year}-${formattedMonth}-${formattedDay}`;
 
             const isToday = cellIso === todayIso;
+            const isSunday = new Date(year, month, dayNum).getDay() === 0;
             const hasEvent = calendarEvents.some(e => e.date === cellIso);
 
             return (
               <button
                 key={`day-${dayNum}`}
                 onClick={() => handleDateClick(dayNum)}
-                className={`h-7 w-7 mx-auto rounded-full flex flex-col items-center justify-center text-xs relative transition-all duration-200 cartoon-btn ${
+                className={`h-7 w-7 mx-auto rounded-full border border-transparent flex flex-col items-center justify-center text-xs relative transition-all duration-200 cartoon-btn ${
                   isToday
-                    ? 'bg-sunshine-400 text-black font-bold shadow-md scale-105'
-                    : 'text-white/80 hover:bg-white/15 hover:text-white'
+                    ? 'bg-yellow-300/75 text-black font-bold shadow-lg shadow-yellow-300/30 border border-yellow-200/40 scale-105'
+                    : isSunday
+                    ? 'text-red-400 hover:bg-white/10 hover:scale-110'
+                    : 'text-white/80 hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/15 hover:scale-105 hover:text-white'
                 }`}
               >
                 <span>{dayNum}</span>
@@ -143,7 +151,7 @@ export const RightSidebar: React.FC = () => {
         </div>
 
         {todayTasks.length === 0 ? (
-          <div className="flex-1 flex flex-col items-center justify-center text-center p-4 text-white/30">
+          <div className="flex-1 flex flex-col items-center justify-center text-center p-4 text-white">
             <span className="text-2xl block mb-1">✨</span>
             <p className="text-xs font-semibold">No tasks for today</p>
           </div>

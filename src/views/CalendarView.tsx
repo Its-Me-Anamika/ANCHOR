@@ -105,7 +105,12 @@ export const CalendarView: React.FC = () => {
       {/* Days of Week Row */}
       <div className="grid grid-cols-7 gap-2 mb-2 text-center">
         {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
-          <div key={day} className="py-2 text-sm font-extrabold text-white  uppercase tracking-wider">
+          <div
+          key={day}
+          className={`py-2 text-sm font-extrabold uppercase tracking-wider ${
+            day === 'Sunday' ? 'text-red-400' : 'text-white'
+          }`}
+          >
             <span className="hidden md:inline">{day}</span>
             <span className="md:hidden">{day.slice(0, 3)}</span>
           </div>
@@ -127,6 +132,7 @@ export const CalendarView: React.FC = () => {
           const cellIso = `${year}-${formattedMonth}-${formattedDay}`;
 
           const isToday = cellIso === todayIso;
+          const isSunday = new Date(year, month, dayNum).getDay() === 0;
           const dayEvents = calendarEvents.filter(e => e.date === cellIso);
 
           return (
@@ -142,9 +148,11 @@ export const CalendarView: React.FC = () => {
               {/* Day Header */}
               <div className="flex items-center justify-between">
                 <span
-                className={`w-10 h-10 rounded-full flex items-center justify-center font-extrabold text-base transition-all ${
+                className={`w-12 h-12 rounded-full flex items-center justify-center font-extrabold text-base transition-all duration-300 ${
                   isToday
-                  ? 'bg-white/30 text-white font-white border-2 border-white/50 shadow-5xl backdrop-blur-md'
+                  ? 'w-11 h-11 rounded-full flex items-center justify-center bg-[rgba(180,180,180,0.45)] backdrop-blur-3xl border-2 border-white/35 text-white font-black text-lg shadow-[0_4px_16px_rgba(255,255,255,0.12)]'
+                  : isSunday
+                  ? 'text-red-400 group-hover:bg-white/10'
                   : 'text-white group-hover:text-white group-hover:bg-white/10'
                 }`}>
                 {dayNum}

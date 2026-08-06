@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { ViewMode } from '../types';
+import Logo from '../assets/logo.svg';
 
 interface NavItem {
   id: ViewMode;
@@ -34,25 +35,25 @@ export const Sidebar: React.FC = () => {
   const { currentView, setCurrentView } = useStore();
 
   return (
-    <aside className="w-[80px] shrink-0 h-screen fixed left-0 top-0 z-40 bg-black/30 backdrop-blur-md border-r border-white/10 flex flex-col items-center pt-0 pb-4 justify-between transition-all">
+    <aside className="w-[94px] shrink-0 h-screen fixed left-0 top-0 z-40 bg-black/30 backdrop-blur-md border-r border-white/10 flex flex-col items-center pt-0 pb-4 justify-between transition-all">
       {/* Top Section: Brand + Nav Icons */}
       <div className="flex flex-col items-center w-full">
         {/* Brand Header - NON-Interactive, full-width, visually separated */}
-        <div className="flex flex-col items-center w-full px-2 pt-5 pb-4 border-b border-white/10 mb-3 pointer-events-none select-none">
-          {/* Large anchor icon */}
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 flex items-center justify-center shadow-lg shadow-blue-500/25 mb-2">
-            <span className="text-3xl leading-none">⚓</span>
+        <div className="flex flex-col items-center justify-center w-full px-3 pt-6 pb-5 border-b border-white/10 mb-4 pointer-events-none select-none">
+          {/* Printed Brand Logo */}
+          <div className="mb-3">
+            <img
+            src={Logo}
+            alt="Anchor"
+            className="w-15 h-15"
+          />
           </div>
           {/* Big brand name */}
-          <span className="text-white font-black text-sm tracking-[0.15em] font-mono uppercase leading-none">
+          <span className="text-white font-black text-sm tracking-[0.16em] uppercase leading-none text-center">
             ANCHOR
           </span>
           {/* Divider line */}
           <div className="w-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mt-2 mb-1" />
-          {/* Subtle tagline */}
-          <span className="text-white/25 text-[8px] tracking-[0.2em] font-light uppercase leading-none text-center">
-            focus · create
-          </span>
         </div>
 
         {/* Navigation Items */}
