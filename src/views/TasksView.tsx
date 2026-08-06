@@ -58,7 +58,7 @@ export const TasksView: React.FC = () => {
   return (
     <div className="h-full flex flex-col overflow-hidden p-6">
       {/* View Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl cartoon-card">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 bg-white/5 backdrop-blur-md border border-white/10 px-5 py-3 rounded-2xl cartoon-card">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-2xl bg-coral-500/20 border border-coral-500/30 flex items-center justify-center text-coral-400">
             <CheckSquare className="w-6 h-6" />
@@ -70,7 +70,7 @@ export const TasksView: React.FC = () => {
                 {activeCount} active
               </span>
             </h1>
-            <p className="text-xs text-white/40">Organize your daily targets & boost your focus</p>
+            {/* <p className="text-xs text-white/40">Organize your daily targets & boost your focus</p> */}
           </div>
         </div>
 
@@ -102,16 +102,9 @@ export const TasksView: React.FC = () => {
           placeholder="Add a task and press Enter..."
           value={inputVal}
           onChange={e => setInputVal(e.target.value)}
-          className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 pl-12 text-base text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-coral-400 backdrop-blur-md transition-all shadow-xl font-medium"
+          className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 pl-12 text-base text-white placeholder-white/90 focus:outline-none focus:ring-2 focus:ring-coral-400 backdrop-blur-md transition-all shadow-xl font-medium"
         />
         <Plus className="w-5 h-5 text-coral-400 absolute left-4 top-1/2 -translate-y-1/2" />
-        <button
-          type="submit"
-          disabled={!inputVal.trim()}
-          className="absolute right-3 top-1/2 -translate-y-1/2 px-4 py-2 bg-coral-500 hover:bg-coral-600 disabled:opacity-30 disabled:hover:bg-coral-500 text-white text-xs font-bold rounded-xl transition-all cartoon-btn"
-        >
-          Add Task
-        </button>
       </form>
 
       {/* Grouped Tasks List */}
@@ -133,13 +126,13 @@ export const TasksView: React.FC = () => {
               {groupList.map(task => (
                 <div
                   key={task.id}
-                  className={`group flex items-center justify-between p-4 rounded-2xl border transition-all duration-200 cartoon-card ${
+                  className={`group inline-flex items-center gap-4 p-3 rounded-2xl border transition-all duration-200 cartoon-card max-w-fit ${
                     task.completed
-                      ? 'bg-white/[0.02] border-white/5 text-white/40'
-                      : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'
+                    ? 'bg-black/20 border-white/10 text-white/40'
+                    : 'bg-slate-900/50 border-white/15 hover:bg-slate-900/70 text-white shadow-xl'
                   }`}
                 >
-                  <div className="flex items-center gap-3.5 flex-1 min-w-0 pr-4">
+                  <div className="flex items-center gap-3">
                     <input
                       type="checkbox"
                       checked={task.completed}
@@ -155,7 +148,7 @@ export const TasksView: React.FC = () => {
 
                   <button
                     onClick={() => deleteTask(task.id)}
-                    className="p-2 rounded-xl bg-coral-500/10 hover:bg-coral-500/30 text-coral-400 hover:text-coral-200 opacity-0 group-hover:opacity-100 transition-all cartoon-btn"
+                    className="p-1.5 rounded-lg bg-coral-500/10 hover:bg-coral-500/30 text-coral-400 hover:text-coral-200 transition-all cartoon-btn"
                     title="Delete Task"
                   >
                     <Trash2 className="w-4 h-4" />
