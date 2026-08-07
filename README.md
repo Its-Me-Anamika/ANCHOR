@@ -20,7 +20,8 @@ Most productivity apps are noisy — they demand logins, send push notifications
 
 ## Key Features
 
-### 🏠 Dashboard (Home)
+### 🏠 Dashboard (Home) 
+![Dashboard](docs/dashboard.png)
 - **Animated Flip Clock** — real-time, minute-level digit flip animations with configurable 12h/24h format and optional seconds display
 - **Time-aware greeting** — Good Morning/Afternoon/Evening/Night with emoji based on local time
 - **Rotating motivational quotes** — 17 curated quotes cycling on each session
@@ -30,6 +31,7 @@ Most productivity apps are noisy — they demand logins, send push notifications
 - **Zen Mode launcher** — one-click entry into distraction-free fullscreen
 
 ### 🧘 Zen Mode
+![Zen Mode](docs/zen_mode.png)
 - Full-screen black overlay with three sub-modes: **Clock**, **Timer**, and **Stopwatch**
 - Controls auto-hide after 2 seconds of inactivity; reappear on any mouse movement
 - **Screen Wake Lock API** — prevents the display from sleeping for the entire Zen session; reacquires lock automatically on tab visibility restore
@@ -53,6 +55,7 @@ Most productivity apps are noisy — they demand logins, send push notifications
 - `Ctrl + T` keyboard shortcut to jump to Tasks from any view
 
 ### 📅 Calendar
+![Calendar](docs/calendar.png)
 - Full monthly calendar grid view
 - Add, view, and delete events on any date via the **Event Modal**
 - Event dots rendered on calendar day cells; clickable to open events for that day
@@ -83,6 +86,7 @@ Most productivity apps are noisy — they demand logins, send push notifications
 - Full data export/import includes saved cities
 
 ### 🎨 Themes
+![Theme](docs/theme.png)
 - **14 built-in themes**: Pure Black, Midnight, Tokyo Night, Forest, Ocean, Warm Coffee, Paper White, Warm Latte, Terracotta Dream, Sage Green, Dusky Rose, Golden Hour, Cool Gray, Deep Navy
 - All colors applied via CSS custom properties (`--color-bg`, `--color-surface`, `--color-accent`, etc.) — every component inherits the active theme automatically
 - **Custom wallpaper upload** — PNG/JPG/WebP up to 5 MB; stored as base64
@@ -99,18 +103,6 @@ Most productivity apps are noisy — they demand logins, send push notifications
 
 ---
 
-## Screenshots
-
-| View | Description |
-|---|---|
-| `docs\dashboard.png` | Flip clock, greeting, weather widget, and timer/stopwatch buttons |
-| `docs\zen_mode.png` | Full-screen clock/timer mode with ambient glow and auto-hiding controls |
-| `notes.png` | Sticky note card grid with the TipTap rich-text editor modal open |
-| `weather.png` | Full weather dashboard with city cards showing local times |
-| `docs\theme.png` | Theme selector grid and wallpaper upload panel |
-| `docs\calendar.png` | Monthly calendar with event dots and the Event Modal |
-
----
 
 ## Technology Stack
 
